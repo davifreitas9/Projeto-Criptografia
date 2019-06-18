@@ -15,7 +15,10 @@ export default class CifraDeCesar extends Component {
                                 <div class="control-group">
                                     <div class="form-group floating-label-form-group controls mb-0 pb-2">
                                         <label>Mensagem</label>
-                                        <textarea class="form-control" id="message" rows="5" placeholder="Digite sua Mensagem!" required="required" ></textarea>
+                                        <textarea rows={LINHA} cols={COLUNA} value={this.props.texto} 
+                                                onChange={ this.state.descriptografar ? 
+                                                this.props.descifraTexto : this.props.cifraTexto }
+                                                autoResize={false} class="form-control" id="message" placeholder="Digite sua Mensagem!" required="required" ></textarea>
                                         <p class="help-block text-danger"></p>
                                     </div>
                                 </div>
@@ -28,15 +31,14 @@ export default class CifraDeCesar extends Component {
                                 </div>
                                 <br />
                                 <div id="success"></div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Criptografar!</button>
-                                    <br />
-                                    <br />
-                                    <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Descriptografar!</button>
+                                <div>
+                                    <input type="checkbox" id="descript" name="descript"
+                                        onChange={(value) => this.changeCheckBox(value)} />
+                                    <label >Descriptografar</label>
                                 </div>
                                 <div class="control-group">
                                     <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                        <textarea class="form-control" id="message" rows="5" placeholder="Mensagem Descriptografada!" required="required"  disabled></textarea>
+                                        <textarea class="form-control" id="message" rows="5" placeholder="Mensagem Descriptografada!" required="required" disabled></textarea>
                                         <p class="help-block text-danger"></p>
                                     </div>
                                 </div>
